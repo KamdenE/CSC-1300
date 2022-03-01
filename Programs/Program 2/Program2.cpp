@@ -124,16 +124,16 @@ int main() {
             
             switch (randFunction(1,4)) {
                 case 1:
-                    cout << "You will live in a mansion" << endl;
+                    cout << "You will live in a mansion." << endl;
                 break;
                 case 2:
-                    cout << "You will live in an apartment" << endl;
+                    cout << "You will live in an apartment." << endl;
                 break;
                 case 3:
-                    cout << "You will live in a shack" << endl;
+                    cout << "You will live in a shack." << endl;
                 break;
                 case 4:
-                    cout << "You will live in a house" << endl;
+                    cout << "You will live in a house." << endl;
                 break;
                 default:
                 cout << "rand needs work" << endl;
