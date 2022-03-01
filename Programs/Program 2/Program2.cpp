@@ -17,7 +17,7 @@ int randFunction(int, int);
 
 
 int main() {
-   
+    // variables
     string personLike1, personLike2, personHate;
     int personRand = 0;
     int num1 = 0, num2 = 0, num3 = 0, num4 = 0, num5 = 0, num6 = 0, randNum = 0;
@@ -179,7 +179,7 @@ int main() {
                 default:
                     cout << "rand needs work" << endl;
             }
-            // these are the rands for the question with three outputs
+            
            
             switch (randFunction(1,3)) {
                 case 1:
@@ -235,6 +235,7 @@ int main() {
             cout << "\nGoodbye!";
             return 0;
     }
+    //This outputs Goodbye if the bool is false
     else {
         cout << "\nGoodbye!";
         return 0;
@@ -242,6 +243,7 @@ int main() {
 
     return 0;
     }
+    //functions outside of main
     bool displayMenuGetChoice() {
         int firstAnswer;
         cout << "\nPick from the following menu:" << endl;
@@ -268,6 +270,7 @@ int main() {
                 break;
         }
     }
+    // rand function
     int randFunction(int randLower, int randUpper) {
         return ((rand() % (randUpper - randLower + 1)) + randLower);
     }
