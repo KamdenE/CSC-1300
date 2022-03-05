@@ -4,7 +4,7 @@
     Purpose: Introduces the use of buttons
     on the board.
 */
-#include "mbed.h" 
+/*#include "mbed.h" 
 #include "TTU_X031.h" 
 #include "SevenSegmentLED.h" 
 #include "TextLCD.h" 
@@ -56,4 +56,4 @@ int main(){
  wait_ms(1000);
  lcd.cls();
  return 0; 
-}
+}*/
