@@ -25,14 +25,14 @@ int main()
    for(i = 1; i <= rowAmt; i++)
    {
       //this loop adds the spaces between the numbers
-      for(numSpaces = i; numSpaces < rowAmt; numSpaces++)
+      for(numSpaces = rowAmt - i; numSpaces > 0; numSpaces--)
       {
          cout << " ";
       }
       //for loop to display dollar sign equal to row number
-      for(j = 1; j <= (2 * i - 1); j++)
+      for(j = 1; j <= i; j++)
       {
-         cout << "$";
+         cout << "$ ";
       }
 
       cout << "\n";
