@@ -36,9 +36,9 @@ bool displayMenuGetChoice() {
                 break;
         }
 }
-// Main function
+// employeeSickDays
 
-int main() {
+int employeeSickDays() {
     //variables
     int numEmployees, sickDays, total;
 
