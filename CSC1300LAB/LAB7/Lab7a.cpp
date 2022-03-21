@@ -3,7 +3,7 @@
 	Author:		Kamden Edens
 	Date:		3/7/2022
 	Purpose:	A program that caclulates sick days
-                for the bank.
+                for the bank using functions.
 */
 
 #include <iostream>
