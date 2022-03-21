@@ -9,12 +9,39 @@
 #include <iostream>
 using namespace std;
 
-// Function
-bool displayMenuGetChoice() {
+int displayMenuGetChoice();
+void employeeSickDays();
+// Main
+int main() {
+    bool LoopV = true;
+    while (LoopV)
+    {   
+        switch (displayMenuGetChoice()) {
+            case 1:
+                employeeSickDays();
+                break;
+            case 2:
+                cout << "Bye!" << endl;
+                LoopV = false;
+                break;
+            default:
+                cout << "Error occurred." << endl;
+                LoopV = false;
+                break;
+        }
+    }
+
+    return 0;
+}
+
+// Functions
+int displayMenuGetChoice() {
         int firstAnswer;
-        cout << "\nPlease choose from the following options:" << endl;
+        cout << "Welcome to the Bank!" << endl;
+        cout << "\n\nPlease choose from the following options:" << endl;
         cout << "\n1. Enter Employee Days" << endl;
         cout << "2. End program" << endl;
+        cout << "Choice: ";
         cin >> firstAnswer;
         // checks the user's input
         while (cin.fail() || firstAnswer != 1 && firstAnswer != 2) {
@@ -23,25 +50,25 @@ bool displayMenuGetChoice() {
             cout << "Invalid input. Please try again. " << endl;
             cin >> firstAnswer;
         }
-        switch (firstAnswer) {
-            case 1:
-                return true;
-                break;
-            case 2:
-                return false;
-                break;
-            default:
-                cout << "Error occurred." << endl;
-                return false;
-                break;
-        }
+        return firstAnswer;
+        
 }
 // employeeSickDays
 
-int employeeSickDays() {
+void employeeSickDays() {
     //variables
-    int numEmployees, sickDays, total;
+    int numEmployees, sickDays, sickDaysTotal, total;
+
+    cout << "Please enter in the amount of Employees that were sick last year: " << endl;
+    cin >> numEmployees;
+
+    for (int E = 1; E <= numEmployees; E++) {
+        for (int Y = 1; Y <= 3; Y++) {
+            cout << "How many days was Employee " << E << " sick for during year " << Y << "?";
+            cin >> sickDays;
+            sickDaysTotal += sickDays;
+        }
+    }
+    cout << "\nThe " << numEmployees << " employees were sick for a total of " << sickDaysTotal << " days the last 3 years." << endl;
 
 }
-
-
