@@ -37,7 +37,7 @@ int main() {
 // Functions
 int displayMenuGetChoice() {
         int firstAnswer;
-        cout << "Welcome to the Bank!" << endl;
+        cout << "\n\nWelcome to the Bank!" << endl;
         cout << "\n\nPlease choose from the following options:" << endl;
         cout << "\n1. Enter Employee Days" << endl;
         cout << "2. End program" << endl;
