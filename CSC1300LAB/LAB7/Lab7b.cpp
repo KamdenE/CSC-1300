@@ -4,6 +4,7 @@
     Purpose: Introduces the use of the buzzer with buttons
     on the board.
 */
+/*
 #include "mbed.h" 
 #include "TTU_X031.h" 
 #include "SevenSegmentLED.h" 
@@ -78,4 +79,4 @@ int main(){
     wait_ms(1000);
     lcd.cls();
     return 0; 
-    }
+    }*/
