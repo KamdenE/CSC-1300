@@ -18,7 +18,7 @@ void GETELEPHANTDATA(float foodAmt[], string elephantName[]) {
 	{
 		cout << "\nElephant #" << (x + 1) << ": ";
         cout << "     Name: "; 
-        getline(cin, elephantName[x])
+        getline(cin, elephantName[x]);
         cin.ignore();
         cout << "\n     Food Amount: "; 
         cin >> foodAmt[x];
@@ -32,7 +32,7 @@ void GETSTATS(float foodAmt[], float& foodTotal, float& foodAverage, int& elePig
     }
     foodAverage = foodTotal / 10;
     int biggest = 0;
-    for(x = 1; x < 10; x++) {
+    for(int x = 1; x < 10; x++) {
         if (biggest < foodAmt[x]) {
             biggest = foodAmt[x];
             elePig = x;

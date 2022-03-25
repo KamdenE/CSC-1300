@@ -28,9 +28,9 @@ int main()
     cout << "Greetings! What is the name of your zoo? "; 
     cin.getline(zooName, 100);
 
-    GETELEPHANTDATA();
+    GETELEPHANTDATA(numPounds, elephantName);
 
-    GETSTATS();
+    GETSTATS(numPounds, foodTotal, foodAverage, elePig);
 
 
 
