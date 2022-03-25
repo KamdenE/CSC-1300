@@ -7,10 +7,31 @@
 */
 
 #include "elephant.h"
+#include <iostream>
+#include <cstring>
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+
+const int SIZE = 10;
+int elephantAmt[SIZE]; 
+char zooName[100];
 
 int main()
 {
-   int elephantAmt[10]; 
+    float foodTotal, foodAverage;
+    int elePig;
+    float numPounds[SIZE];
+    string elephantName[SIZE];
+
+    cout << "Greetings! What is the name of your zoo? "; 
+    cin.getline(zooName, 100);
+
+    GETELEPHANTDATA();
+
+    GETSTATS();
+
 
 
 
