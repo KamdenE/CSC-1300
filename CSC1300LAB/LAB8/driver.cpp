@@ -43,6 +43,5 @@ int main()
     cout << "\n\n\nThe elephant that ate the most (" << numPounds[elePig] << " pounds) is " << elephantName[elePig] << "!!" << endl;
     cout << line << endl;
 
-
     return 0;
 }
