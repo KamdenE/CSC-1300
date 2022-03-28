@@ -32,7 +32,7 @@ void GETSTATS(float foodAmt[], float& foodTotal, float& foodAverage, int& elePig
     }
     foodAverage = foodTotal / 10;
     int biggest = 0;
-    for(int x = 1; x < 10; x++) {
+    for(int x = 0; x < 10; x++) {
         if (biggest < foodAmt[x]) {
             biggest = foodAmt[x];
             elePig = x;
