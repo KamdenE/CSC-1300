@@ -21,7 +21,7 @@ int main()
     bool run = true;
     double price = 0;
     cout << "\n\nWelcome to the Market!" << endl;
-
+    //starts the loop
     do{
         cout << "\nPlease enter in your item: ";
 		getline(cin, check);
@@ -38,21 +38,21 @@ int main()
         cout << "\nPlease enter in your item's cost: ";
         cin >> price;
         cin.ignore();
-
+        //Now puts it into the vector if it passes the test.
         stringV.push_back(check);
         doubleV.push_back(price);
         
     } while(run == true);
 
 
-       
+    //totals the vector
     double total = 0;
 
     for(int x = 0; x < stringV.size(); x++) 
     {
         total += doubleV.at(x);
     }
-
+    //prints the receipt
     cout << "\n\nReceipt" << endl;
     for(int x = 0; x < stringV.size(); x++)
     {
