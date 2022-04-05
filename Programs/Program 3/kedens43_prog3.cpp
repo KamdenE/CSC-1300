@@ -8,7 +8,6 @@
 
 #include <iostream>
 #include <cstring>
-#include <iostream>
 #include <iomanip>
 #include <vector>
 #include <fstream>
@@ -27,7 +26,9 @@ string labelsArray[6] = {"TOTAL DINOS", "TOTAL CARNIVORE", "TOTAL HERBIVORE DINO
 
 int main() {
     ifstream inputfile;
-    ofstream outfile; 
+    ofstream dinoOutfile;
+    ofstream carnOutfile;
+    ofstream harbOutfile;
 
     cout << "Enter in the file name (dinoDirectory.txt): ";
     getline(cin, filename);
@@ -55,21 +56,42 @@ int carnOrHerb(animalName) {
     cout << "yes";
 }
 bool searchCarnivore(animalSearch) {
+    bool isCarn = false;
     ifstream carnfile;
     string name;
     carnfile.open("carnivores.txt");
-    getline(carnfile, name);
-	carnfile.close();      // Close the file
+    while(getline(carnfile, name, '#')) {
+        if (animalSearch == name) {
+            isCarn = true;
+        }
+    }
+    return isCarn;
+
    
 }
 bool searchHerbivore(animalSearch) {
-
+    bool isHerb = false;
+    ifstream herbfile;
+    string name;
+    herbfile.open("herbivores.txt");
+    while(getline(herbfile, name, '#')) {
+        if (animalSearch == name) {
+            isHerb = true;
+        }
+    }
+    return isHerb;
 }
-void printDino(outputFile&, inputFile&, animalName, totalsA[]) {
+void printDino(ofstream& outfile, ifstream& infile, string animalName, int totalsA[]) {
+
 
 }
 bool overTenGrand(weightCheck) {
+    string mass;
+    bool weightCompare;
 
+    if(mess.find, ' lbs') {
+        mass.erase
+    }
 }
 void printResults(totalsA[], labelsA[]) {
 
