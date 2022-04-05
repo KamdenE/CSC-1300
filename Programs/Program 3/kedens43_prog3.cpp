@@ -31,7 +31,7 @@ int main() {
     ifstream dinofile;
     ofstream otherOutFile;
     ofstream carnOutFile;
-    ofstream harbOutFile;
+    ofstream herbOutFile;
 
     cout << "Enter in the file name (dinoDirectory.txt): ";
     getline(cin, filename);
@@ -55,7 +55,7 @@ int main() {
             // call print dino
             //close file end loop
         }
-        //close input file
+        dinofile.close();
         //call printResults sending the arrays
     }
 
@@ -64,25 +64,22 @@ int main() {
 }
 
 
-int carnOrHerb(animalName) {
-    string Carn, Herb, Other;
+int carnOrHerb(string animalName) {
 
-    searchCarnivore(Carn);
-
-    searchHerbivore(Herb); 
-
-    if(Carn == true) {
+    if(searchCarnivore(animalName)) {
         return 1;
     }
 
-    else if(Herb == true) {
+    else if(searchHerbivore(animalName)) {
         return 2;
     }
+
     else {
         return -1;
     }
 }
-bool searchCarnivore(animalSearch) {
+
+bool searchCarnivore(string animalSearch) {
     bool isCarn = false;
     ifstream carnfile;
     string name;
@@ -95,7 +92,7 @@ bool searchCarnivore(animalSearch) {
     return isCarn;
 }
 
-bool searchHerbivore(animalSearch) {
+bool searchHerbivore(string animalSearch) {
     bool isHerb = false;
     ifstream herbfile;
     string name;
@@ -108,35 +105,47 @@ bool searchHerbivore(animalSearch) {
     return isHerb;
 }
 void printDino(ofstream& outfile, ifstream& infile, string animalName, int totalsA[]) {
-    ofstream file;
+    string data;
+    outfile << animalName << endl;
+    getline(infile, data, '#');
+    outfile << data << endl;
+    // call ten grand function
+    getline(infile, data, '#');
+    outfile << data << endl;
+    getline(infile, data, '#');
+    outfile << data << endl;
+    getline(infile, data, '#');
+    outfile << data << endl;
+
+    
     
 }
-bool overTenGrand(weightCheck) {
+bool overTenGrand(string weightCheck) {
     string mass;
     bool weightCompare;
     int num;
     // int num = stoi(mass) should convert
 
-    if(mass.find, '30 to 60 lbs') {
-        //mass.erase(' lbs')
+    if(weightCheck.find, "30 to 60 lbs") {
+        //weightCheck.erase(' lbs')
         //int num = stoi(mass)
         weightCompare = false;
     }
-    else if(mass.find, '5,000 to 9,000 lbs') {
+    else if(weightCheck.find, '5,000 to 9,000 lbs') {
         weightCompare = false;
     }
-    else if(mass.find, '9,000 to 10,000 lbs') {
+    else if(weightCheck.find, '9,000 to 10,000 lbs') {
         weightCompare = true;
     }
-    else if(mass.find, '11,000 to 15,000 lbs') {
-        weigthCompare = true;
+    else if(weightCheck.find, '11,000 to 15,000 lbs') {
+        weightCompare = true;
     }
     else {
         cout << "Error";
     }
-    return weigthCompare;
+    return weightCompare;
 }
-void printResults(totalsA[], labelsA[]) {
+void printResults(int totalsA[], string labelsA[]) {
     totalsA[];
     labelsA[];
     int numElements = 7;
