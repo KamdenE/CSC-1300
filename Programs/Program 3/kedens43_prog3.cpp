@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <string>
 #include <iomanip>
 #include <vector>
 #include <fstream>
@@ -24,7 +25,7 @@ void printResults(int[], string[]);
 
 int main() {
 
-    string filename;
+    string filename, tempString;
     int totalsArray[6] = {0};
     string labelsArray[6] = {"TOTAL DINOS", "TOTAL CARNIVORE", "TOTAL HERBIVORE DINOS", "DINOS OVER 10,000", "DINO NAMES END IN 'SAURUS'", "ANIMALS NOT DINOS"};
 
@@ -52,6 +53,7 @@ int main() {
             }
             // call carnOrHerb
             //open correct outfile
+            //use tempstring to send overtengrand a number using findvn
             // call print dino
             //close file end loop
         }
@@ -109,42 +111,72 @@ void printDino(ofstream& outfile, ifstream& infile, string animalName, int total
     outfile << animalName << endl;
     getline(infile, data, '#');
     outfile << data << endl;
-    // call ten grand function
-    getline(infile, data, '#');
-    outfile << data << endl;
-    getline(infile, data, '#');
-    outfile << data << endl;
-    getline(infile, data, '#');
-    outfile << data << endl;
+    if (overTenGrand(animalName)) {
 
-    
-    
+    }
+    getline(infile, data, '#');
+    outfile << data << endl;
+    getline(infile, data, '#');
+    outfile << data << endl;
+    getline(infile, data, '#');
+    outfile << data << endl;
 }
+/*
+int main() {
+    string myStr;
+    getline(cin, myStr);
+    int num = 0;
+    size_t found;
+
+    found = myStr.find("to ");
+    if (found != string::npos) {
+        cout << "'to' found" << endl;
+        myStr.erase(myStr.begin(), myStr.begin()+(found+2));
+        cout << "New string: " << myStr << endl;
+    }
+
+
+    num = stoi(myStr);
+    found = myStr.find(",");
+
+    if (found != string::npos) {
+        cout << "Comma found" << endl;
+        num *= 1000;
+    }
+    
+    cout << num << endl;
+
+    if (num > 10000) 
+        cout << "true\n";
+
+*/
 bool overTenGrand(string weightCheck) {
-    string mass;
     bool weightCompare;
     int num;
+    size_t found;
     // int num = stoi(mass) should convert
+    //int num = stoi(mass)
 
-    if(weightCheck.find, "30 to 60 lbs") {
-        //weightCheck.erase(' lbs')
-        //int num = stoi(mass)
-        weightCompare = false;
+    found = weightCheck.find("to ");
+    if (found != string::npos) {
+        weightCheck.erase(weightCheck.begin(), weightCheck.begin()+(found+2));
     }
-    else if(weightCheck.find, '5,000 to 9,000 lbs') {
-        weightCompare = false;
+
+    num = stoi(weightCheck);
+    found = weightCheck.find(",");
+
+    if (found != string::npos) {
+        num *= 1000;
     }
-    else if(weightCheck.find, '9,000 to 10,000 lbs') {
+
+    if (num > 10000) {
         weightCompare = true;
     }
-    else if(weightCheck.find, '11,000 to 15,000 lbs') {
-        weightCompare = true;
-    }
-    else {
-        cout << "Error";
-    }
+
     return weightCompare;
 }
+    
+
 void printResults(int totalsA[], string labelsA[]) {
     totalsA[];
     labelsA[];
