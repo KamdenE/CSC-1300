@@ -28,7 +28,7 @@ int main() {
     string filename, tempString;
     int totalsArray[6] = {0};
     string labelsArray[6] = {"TOTAL DINOS", "TOTAL CARNIVORE", "TOTAL HERBIVORE DINOS", "DINOS OVER 10,000", "DINO NAMES END IN 'SAURUS'", "ANIMALS NOT DINOS"};
-
+    size_t find;
     ifstream dinofile;
     ofstream otherOutFile;
     ofstream carnOutFile;
@@ -48,17 +48,31 @@ int main() {
     if(dinofile.is_open()) {
         while(getline(filename, tempString, '#')){
             
-            if(filename.find, 'saurus') {
-                //increment totalsArray 5
+            find = tempstring.find("saurus");
+            if(find != string::npos) {
+                totalsArray[4] += 1;
             }
-            // call carnOrHerb
-            //open correct outfile
+            switch (carnOrHerb(tempString)) {
+                case 1:
+                    totalsArray[0] += 1;
+                    totalsArray[1] += 1;
+                    printDino(carnOutFile, dinofile, tempString, totalsArray[]);
+                    break;
+                case 2:
+                    totalsArray[0] += 1;
+                    totalsArray[2] += 1;
+                    printDino(herbOutFile, dinofile, tempString, totalsArray[]);
+                    break;
+                case -1:
+                    totalsArray[5] += 1;
+                    printDino(otherOutFile, dinofile, tempString, totalsArray[]);
+                    break;
+            }
             //use tempstring to send overtengrand a number using findvn
-            // call print dino
-            //close file end loop
+            printDino(tempString)
         }
         dinofile.close();
-        //call printResults sending the arrays
+        printResults();
     }
 
 
@@ -112,7 +126,7 @@ void printDino(ofstream& outfile, ifstream& infile, string animalName, int total
     getline(infile, data, '#');
     outfile << data << endl;
     if (overTenGrand(animalName)) {
-
+        totalsA[3] += 1;
     }
     getline(infile, data, '#');
     outfile << data << endl;
@@ -121,35 +135,7 @@ void printDino(ofstream& outfile, ifstream& infile, string animalName, int total
     getline(infile, data, '#');
     outfile << data << endl;
 }
-/*
-int main() {
-    string myStr;
-    getline(cin, myStr);
-    int num = 0;
-    size_t found;
 
-    found = myStr.find("to ");
-    if (found != string::npos) {
-        cout << "'to' found" << endl;
-        myStr.erase(myStr.begin(), myStr.begin()+(found+2));
-        cout << "New string: " << myStr << endl;
-    }
-
-
-    num = stoi(myStr);
-    found = myStr.find(",");
-
-    if (found != string::npos) {
-        cout << "Comma found" << endl;
-        num *= 1000;
-    }
-    
-    cout << num << endl;
-
-    if (num > 10000) 
-        cout << "true\n";
-
-*/
 bool overTenGrand(string weightCheck) {
     bool weightCompare;
     int num;
@@ -178,13 +164,10 @@ bool overTenGrand(string weightCheck) {
     
 
 void printResults(int totalsA[], string labelsA[]) {
-    totalsA[];
-    labelsA[];
-    int numElements = 7;
     string line(50, '-');
-    cout << line;
-    for(int x = 0; x < numElements; x++) {
-        cout << labelsA[x] << totalsA[x] << endl;
+    cout << line << endl;
+    for(int x = 0; x < 6; x++) {
+        cout << labelsA[x] << ": " << totalsA[x] << endl;
     }
-    cout << line;
+    cout << line << endl;
 }
