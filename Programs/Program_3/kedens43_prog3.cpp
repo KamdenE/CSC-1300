@@ -24,16 +24,14 @@ void printResults(int[], string[]);
 
 
 int main() {
-
+    // variables and files
     string filename, tempString;
     int totalsArray[6] = {0};
     string labelsArray[6] = {"TOTAL DINOS", "TOTAL CARNIVORE", "TOTAL HERBIVORE DINOS", "DINOS OVER 10,000", "DINO NAMES END IN 'SAURUS'", "ANIMALS NOT DINOS"};
     size_t find;
     ifstream dinofile;
-    //ofstream otherOutFile;
-    //ofstream carnOutFile;
-    //ofstream herbOutFile;
     ofstream outStreamFile;
+    // This clears files. Pretty Neat.
     outStreamFile.open("carnOutFile.txt",ios::trunc);
     outStreamFile.close();
     outStreamFile.open("herbOutFile.txt",ios::trunc);
@@ -46,7 +44,7 @@ int main() {
 
     cout << "Enter in the file name (dinoDirectory.txt): ";
     getline(cin, filename);
-
+    // Confirms that the input is correct
     while(filename != "dinoDirectory.txt") {
         cout << "Please try to enter the file name in again: ";
         cin.ignore();
@@ -54,7 +52,7 @@ int main() {
     }
 
     dinofile.open(filename);
-
+    // The loop to calculate and fill the files. Goes through everything.
     if(dinofile.is_open()) {
         while(getline(dinofile, tempString, '#')){
             
@@ -85,6 +83,7 @@ int main() {
                     break;
             }
         }
+        // closes files and prints results
         dinofile.close();
         printResults(totalsArray, labelsArray);
         outStreamFile.close();
@@ -94,7 +93,7 @@ int main() {
     return 0;
 }
 
-
+// determins if it is a carn or herb
 int carnOrHerb(string animalName) {
 
     if(searchCarnivore(animalName)) {
@@ -112,7 +111,7 @@ int carnOrHerb(string animalName) {
         return -1;
     }
 }
-
+// checks for carn
 bool searchCarnivore(string animalSearch) {
     ifstream carnfile;
     string name;
@@ -124,7 +123,7 @@ bool searchCarnivore(string animalSearch) {
     }
     return false;
 }
-
+// checks for herb
 bool searchHerbivore(string animalSearch) {
     ifstream herbfile;
     string name;
@@ -136,6 +135,7 @@ bool searchHerbivore(string animalSearch) {
     }
     return false;
 }
+// prints into the files
 void printDino(ofstream& outfile, ifstream& infile, string animalName, int totalsA[]) {
     string data;
     size_t find;
@@ -152,7 +152,7 @@ void printDino(ofstream& outfile, ifstream& infile, string animalName, int total
     getline(infile, data, '#');
     outfile << "Description " << setw(12) << " " << data << endl;
 }
-
+// checks if the animal is over 10k
 bool overTenGrand(string weightCheck) {
     bool weightCompare;
     int num;
@@ -176,8 +176,7 @@ bool overTenGrand(string weightCheck) {
 
     return weightCompare;
 }
-    
-
+// print results
 void printResults(int totalsA[], string labelsA[]) {
     string line(50, '-');
     cout << line << endl;
