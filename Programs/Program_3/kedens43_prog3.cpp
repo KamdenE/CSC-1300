@@ -93,7 +93,7 @@ int main() {
     return 0;
 }
 
-// determins if it is a carn or herb
+// determins if it is a carn or herb animal
 int carnOrHerb(string animalName) {
 
     if(searchCarnivore(animalName)) {
@@ -176,7 +176,7 @@ bool overTenGrand(string weightCheck) {
 
     return weightCompare;
 }
-// print results
+// prints results
 void printResults(int totalsA[], string labelsA[]) {
     string line(50, '-');
     cout << line << endl;
