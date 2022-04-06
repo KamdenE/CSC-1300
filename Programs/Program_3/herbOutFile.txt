@@ -1,0 +1,15 @@
+Dino Name:              Ankylosaurus
+Height/Length           5.6 feet tall
+Mass                    11,000 to 18,000 lbs
+Eats                    low-lying plants
+Description             Ankylosaurus had a low, broad body with almost turtle-like or armadillo-like proportions and a wide, flattened head with two pairs of horn-like structures projecting from the back. The front of the jaws bore a beak, and the rest of the jaws contain rows of small leaf-shaped teeth.
+Dino Name:              Stegosaurus
+Height/Length           21 to 30 feet long
+Mass                    2,300 to 6,800 lbs
+Eats                    moss and cycad
+Description             These were large, heavily built, herbivorous quadrupeds with rounded backs, short fore limbs, long hind limbs, and tails held high in the air. Due to their distinctive combination of broad, upright plates and tail tipped with spikes, Stegosaurus is one of the most recognizable kinds of dinosaurs.
+Dino Name:              Triceratops
+Height/Length           9.5 to 9.8 feet high, 30 feet long
+Mass                    11,000 to 15,750 lbs
+Eats                    cyad, palm trees
+Description             These dinosaurs likely lived in dry, forested areas and plains where vegetation was plentiful. Ferns, cycads, and palms, were likely plentiful in these habitats. The jaws were tipped with a deep, narrow beak, believed to have been better at grasping and plucking than biting. Triceratops teeth were arranged in groups called batteries, of 36 to 40 tooth columns in each side of each jaw, with 3 to 5 stacked teeth per column, depending on the size of the animal.

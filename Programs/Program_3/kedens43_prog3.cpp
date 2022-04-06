@@ -34,6 +34,15 @@ int main() {
     //ofstream carnOutFile;
     //ofstream herbOutFile;
     ofstream outStreamFile;
+    outStreamFile.open("carnOutFile.txt",ios::trunc);
+    outStreamFile.close();
+    outStreamFile.open("herbOutFile.txt",ios::trunc);
+    outStreamFile.close();
+    outStreamFile.open("otherOutFile.txt",ios::trunc);
+    outStreamFile.close();
+
+
+
 
     cout << "Enter in the file name (dinoDirectory.txt): ";
     getline(cin, filename);
@@ -57,26 +66,28 @@ int main() {
                 case 1:
                     totalsArray[0] += 1;
                     totalsArray[1] += 1;
-                    outFileStream.open("carnivore.txt");
-                    printDino(carnOutFile, dinofile, tempString, totalsArray);
+                    outStreamFile.open("carnOutFile.txt",ios::app);
+                    printDino(outStreamFile, dinofile, tempString, totalsArray);
+                    outStreamFile.close();
                     break;
                 case 2:
                     totalsArray[0] += 1;
                     totalsArray[2] += 1;
-
-                    printDino(herbOutFile, dinofile, tempString, totalsArray);
+                    outStreamFile.open("herbOutFile.txt",ios::app);
+                    printDino(outStreamFile, dinofile, tempString, totalsArray);
+                    outStreamFile.close();
                     break;
                 case -1:
                     totalsArray[5] += 1;
-                    printDino(otherOutFile, dinofile, tempString, totalsArray);
+                    outStreamFile.open("otherOutFile.txt",ios::app);
+                    printDino(outStreamFile, dinofile, tempString, totalsArray);
+                    outStreamFile.close();
                     break;
             }
         }
         dinofile.close();
         printResults(totalsArray, labelsArray);
-        otherOutFile.close();
-        carnOutFile.close();
-        herbOutFile.close();
+        outStreamFile.close();
     }
 
 
@@ -128,18 +139,18 @@ bool searchHerbivore(string animalSearch) {
 void printDino(ofstream& outfile, ifstream& infile, string animalName, int totalsA[]) {
     string data;
     size_t find;
-    outfile << animalName << endl;
+    outfile << "Dino Name: " << setw(13) << " " << animalName << endl;
     getline(infile, data, '#');
-    outfile << data << endl;
+    outfile << "Height/Length " << setw(10) << " " << data << endl;
     getline(infile, data, '#');
     if(overTenGrand(data)) {
         totalsA[3] += 1;
     }
-    outfile << data << endl;
+    outfile << "Mass " << setw(19) << " " << data << endl;
     getline(infile, data, '#');
-    outfile << data << endl;
+    outfile << "Eats " << setw(19) << " " << data << endl;
     getline(infile, data, '#');
-    outfile << data << endl;
+    outfile << "Description " << setw(12) << " " << data << endl;
 }
 
 bool overTenGrand(string weightCheck) {
