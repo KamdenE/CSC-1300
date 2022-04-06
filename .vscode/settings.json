@@ -2,7 +2,8 @@
     "editor.guides.bracketPairs":"active",
     "files.associations": {
         "iostream": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "ostream": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

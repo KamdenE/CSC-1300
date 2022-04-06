@@ -1,10 +1,1 @@
-Tyrannosaurus Rex
-#Spinosaurus
-#Giganotosaurus
-#Carcharodontosaurus
-#Rajasaurus
-#Tarbosaurus
-#Utahraptor
-#Acrocanthosaurus
-#Velociraptor
-#Saurophaganax#
+Tyrannosaurus Rex#Spinosaurus#Giganotosaurus#Carcharodontosaurus#Rajasaurus#Tarbosaurus#Utahraptor#Acrocanthosaurus#Velociraptor#Saurophaganax#

@@ -1,10 +1,1 @@
-Diplodocus
-#Dracorex
-#Moschops
-#Argentinosaurus
-#Stegosaurus
-#Triceratops
-#Edmontosaurus
-#Hadrosaurus
-#Nodosaurus
-#Ankylosaurus#
+Diplodocus#Dracorex#Moschops#Argentinosaurus#Stegosaurus#Triceratops#Edmontosaurus#Hadrosaurus#Nodosaurus#Ankylosaurus#
