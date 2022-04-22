@@ -22,30 +22,29 @@ struct carInfo
 
 struct Car
 {
-	carInfo temp;
+	carInfo carInfo;
 	string color;
 	double price;
 };
 
 int main()
 {
-	string cars[3];
+	Car cars[3];
 
 	for (int index = 0; index < 3; index++)
 	{
+		cin.ignore();
 		cout << "\nEnter data for car " << (index + 1);
 		cout << ": ";
 		cout << "\nWhat car is it? ";
-		getline(cin, cars[index].temp.make);
-		cin.ignore();
+		getline(cin, cars[index].carInfo.make);
 		cout << "\nWhat model? ";
-		getline(cin, cars[index].temp.model);
-		cin.ignore();
+		getline(cin, cars[index].carInfo.model);
 		cout << "\nYear of the car: ";
-		cin >> cars[index].temp.year;
+		cin >> cars[index].carInfo.year;
+		cin.ignore();
 		cout << "\nColor of the car: ";
 		getline(cin, cars[index].color);
-		cin.ignore();
 		cout << "\nHow much does it cost? ";
 		cin >> cars[index].price;
 		cout << endl;
@@ -53,11 +52,11 @@ int main()
 	for (int index = 0; index < 3; index++)
 	{
 		cout << "\n\nYour car: " << endl;
-		cout << "Make: " << cars[index].temp.make;
-		cout << "\nModel: " << cars[index].temp.model;
-		cout << "\nYear: " << cars[index].temp.year;
+		cout << "Make: " << cars[index].carInfo.make;
+		cout << "\nModel: " << cars[index].carInfo.model;
+		cout << "\nYear: " << cars[index].carInfo.year;
 		cout << "\nColor: " << cars[index].color;
-		cout << "\nCost: " << cars[index].cost;
+		cout << "\nCost: " << cars[index].price;
 	}
 
 
