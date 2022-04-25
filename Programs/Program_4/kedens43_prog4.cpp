@@ -19,6 +19,7 @@ int main() {
 
     int answerChoice, loopAnswer;
     int maxHeroes = 0, arrNumHeroes = 0;
+    string heroName;
     char answer5 = 'n';
     string line(50, '-');
     bool runProg;
@@ -56,6 +57,7 @@ int main() {
         {
             case 1:
             arrNumHeroes = enterHeroes(maxHeroes, arrNumHeroes, heroArr);
+            moveArrayElements(heroName, arrNumHeroes, heroArr);
             break;
             case 2:
             deleteHeroes(arrNumHeroes, heroArr);
@@ -78,14 +80,13 @@ int main() {
                 }
 
                 if(answer5 == 'Y' || answer5 == 'y'){
-                    //saveToFile(arrNumHeroes, heroArr);
+                    saveToFile(arrNumHeroes, heroArr);
                     loopAnswer = 5;
                 }
-                if(answer5 == 'Y' || answer5 == 'y'){
+                if(answer5 == 'N' || answer5 == 'n'){
                     loopAnswer = 5;
                 }
             default:
-            cout << "Default" << endl;
             break;
             
         }

@@ -124,7 +124,7 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
                 }
             }
 
-            cout << arrNumHeroes << " heroe(s) from " << heroFileName << " have been added to your condo complex.\n";
+            cout << arrNumHeroes << " hero(s) from " << heroFileName << " have been added to your condo complex.\n";
 
             inFileStream.close();
             //cout << "File closed\n";
@@ -230,16 +230,16 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
 
 int deleteHeroes(int arrNumHeroes, heroes* heroArr)
 {
-    cout << "The following is a list of all the heros living in your condo complex:";
 	string removeHero;
 
-    cout << "The following is a list of all the heros living in your condo complex:";
+    cout << "The following is a list of all the heros living in your condo complex: ";
     for (int i = 0; i < arrNumHeroes; i++) {
         cout << heroArr[i].heroName << '\n';
     }
 
     cout << "Which hero are you kicking out of your complex?\n";
     cout << "SUPERHERO NAME: ";
+    cin.ignore();
     getline(cin, removeHero);
     while(cin.fail()) {
         cin.clear();
@@ -249,22 +249,34 @@ int deleteHeroes(int arrNumHeroes, heroes* heroArr)
         cout << "SUPERHERO NAME: ";
         getline(cin, removeHero);
     }
-/*
-    if(moveArrayElements(removeHero, numHeroes, heroArray)) {
+
+    if(moveArrayElements(removeHero, arrNumHeroes, heroArr)) {
         cout << "You have removed " << removeHero << ".\n";
-        numHeroes -= 1;
+        arrNumHeroes -= 1;
     }
     
     else 
         cout << "Sorry a hero by the name " << removeHero << " could not be found.\n";
-*/
+
     return arrNumHeroes;
 
 }
 
-void moveArrayElements(string removeHero, int arrNumHeros, heroes* heroArr)
-{
-
+bool moveArrayElements(string heroName, int arrNumHeroes, heroes *heroArr) {
+    for (int i = 0; i < arrNumHeroes; i++) {
+        if (heroName == heroArr[i].heroName) {
+            for (int j = i; j < arrNumHeroes; j++) {
+                heroArr[j].heroName = heroArr[j+1].heroName;
+                heroArr[j].heroDesc = heroArr[j+1].heroDesc;
+                heroArr[j].heroDanger = heroArr[j+1].heroDanger;
+                heroArr[j].rent.heroYears = heroArr[j+1].rent.heroYears;
+                heroArr[j].rent.heroDmg = heroArr[j+1].rent.heroDmg;
+                heroArr[j].rent.heroYears = heroArr[j+1].rent.heroYears;
+            }
+            return true;
+        }
+    }
+    return false;
 }
 
 void printHeroes(int arrNumHeros, heroes* heroArr)
@@ -273,7 +285,13 @@ void printHeroes(int arrNumHeros, heroes* heroArr)
 		cout << line << "SUPERHERO " << i+1 << endl;
 		cout << "\n\nNAME:     " << heroArr[i].heroName << endl;
 		cout << "DESC:     " << heroArr[i].heroDesc << endl;
-		cout << "DANGER:   " << heroArr[i].heroDanger << endl;
+		cout << "DANGER:   ";
+        if(heroArr[i].heroDanger){
+            cout << "Yes" << endl;
+        }
+        else {
+            cout << "No" << endl;
+        }
 		cout << "RENT:     " << heroArr[i].rent.heroRent << endl;
 		cout << "DAMAGE:   " << heroArr[i].rent.heroDmg << endl;
 		cout << "YEARS:    " << heroArr[i].rent.heroYears << endl;
@@ -296,7 +314,26 @@ void printRentDetails(int arrNumHeros, heroes* heroArr)
 	cout << "\nTOTALS:           $     " << totalRent << "    $        " << totalDmg;
 }
 
-void saveToFile(int arrNumHeros, heroes* heroArr)
-{
-
+void saveToFile(int arrNumHero, heroes *heroArr) {
+    string fileName;
+    ofstream printFile;
+    cin.ignore();
+    cout << "what is the name if the file?: "; 
+    getline(cin, fileName);
+    printFile.open(fileName);
+    if (printFile.is_open()){
+        for (int i=0; i < arrNumHero; i++) {
+            printFile << heroArr[i].heroName << "#";
+            printFile << heroArr[i].heroDesc << "#";
+            printFile << heroArr[i].heroDanger << "#";
+            printFile << heroArr[i].rent.heroRent << "#";
+            printFile << heroArr[i].rent.heroDmg << "#";
+            printFile << heroArr[i].rent.heroYears << "#";
+        }
+        cout << "\nYour superheroes were successfully saved to " << fileName << " text file." << endl;
+    }
+    else {
+        cout << "An error has occured while trying to print your file." << endl;
+    }
+    printFile.close();
 }

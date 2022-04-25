@@ -23,7 +23,7 @@ int enterHeroes(int, int, heroes*);
 
 int deleteHeroes(int, heroes*);
 
-void moveArrayElements(string, int, heroes*);
+bool moveArrayElements(string, int, heroes*);
 
 void printHeroes(int, heroes*);
 
