@@ -131,7 +131,7 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
             break;
         
         case 2:
-            for(int i = 0; i < maxHeroes; i++) {
+            for(int i = arrNumHeroes; i < maxHeroes; i++) {
                 cout << "SUPERHERO NAME: ";
                 cin.ignore();
                 getline(cin, heroArr[i].heroName);
@@ -258,6 +258,7 @@ int deleteHeroes(int arrNumHeroes, heroes* heroArr)
     else 
         cout << "Sorry a hero by the name " << removeHero << " could not be found.\n";
 
+    cout << arrNumHeroes;
     return arrNumHeroes;
 
 }
@@ -279,9 +280,9 @@ bool moveArrayElements(string heroName, int arrNumHeroes, heroes *heroArr) {
     return false;
 }
 
-void printHeroes(int arrNumHeros, heroes* heroArr)
+void printHeroes(int arrNumHeroes, heroes* heroArr)
 {
-	for(int i = 0; i < arrNumHeros; i++){
+	for(int i = 0; i < arrNumHeroes; i++){
 		cout << line << "\nSUPERHERO " << i+1 << endl;
 		cout << "\n\nNAME:     " << heroArr[i].heroName << endl;
 		cout << "DESC:     " << heroArr[i].heroDesc << endl;
@@ -298,13 +299,13 @@ void printHeroes(int arrNumHeros, heroes* heroArr)
 	}
 }
 
-void printRentDetails(int arrNumHeros, heroes* heroArr)
+void printRentDetails(int arrNumHeroes, heroes* heroArr)
 {
 	int totalRent = 0, totalDmg = 0;
 	cout << "\n\nRENT DETAILS OF EACH HERO: " << endl;
 	cout << "\nSUPERHERO          MONTHLY RENT     DAMAGE COST" << endl;
 
-	for(int i = 0; i < arrNumHeros; i++){
+	for(int i = 0; i < arrNumHeroes; i++){
 		cout << heroArr[i].heroName << "    $" << heroArr[i].rent.heroRent << "    $" << heroArr[i].rent.heroDmg << endl;
 		totalRent += heroArr[i].rent.heroRent;
 		totalDmg += heroArr[i].rent.heroDmg;
@@ -314,7 +315,7 @@ void printRentDetails(int arrNumHeros, heroes* heroArr)
 	cout << "\nTOTALS:           $     " << totalRent << "    $        " << totalDmg;
 }
 
-void saveToFile(int arrNumHero, heroes *heroArr) {
+void saveToFile(int arrNumHeroes, heroes *heroArr) {
     string fileName;
     ofstream printFile;
     cin.ignore();
@@ -322,7 +323,7 @@ void saveToFile(int arrNumHero, heroes *heroArr) {
     getline(cin, fileName);
     printFile.open(fileName);
     if (printFile.is_open()){
-        for (int i=0; i < arrNumHero; i++) {
+        for (int i=0; i < arrNumHeroes; i++) {
             printFile << heroArr[i].heroName << "#";
             printFile << heroArr[i].heroDesc << "#";
             printFile << heroArr[i].heroDanger << "#";
