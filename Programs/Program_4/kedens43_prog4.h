@@ -11,7 +11,7 @@ struct rent
     double heroDmg;
     int heroYears;
 };
-struct heros
+struct heroes
 {
     string heroName;
     string heroDesc;
@@ -19,6 +19,16 @@ struct heros
     rent rent;
 };
 
-void enterHeros(float foodAmt[], string elephantName[]);
-void GETSTATS(float foodAmt[], float& foodTotal, float& foodAverage, int& elePig);
+int enterHeroes(int, int, heroes*);
+
+int deleteHeroes(int, heroes*);
+
+void moveArrayElements(string, int, heroes*);
+
+void printHeroes(int, heroes*);
+
+void printRentDetails(int, heroes*);
+
+void saveToFile(int, heroes*);
+
 #endif
