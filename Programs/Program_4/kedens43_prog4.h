@@ -31,4 +31,6 @@ void printRentDetails(int, heroes*);
 
 void saveToFile(int, heroes*);
 
+string textWrap(string, int);
+
 #endif

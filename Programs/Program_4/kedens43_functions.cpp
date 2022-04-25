@@ -14,32 +14,32 @@
 
 using namespace std;
 
-string line(50, '-');
+string line(100, '-');
 
 int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
 {
-
+    // define functions
     int userChoice, count = 1;
     char userCharChoice;
     ifstream inFileStream;
     string tempString, heroFileName;
 
 
-    //Check to verify the heroes array isn't maxed out
-    cout << arrNumHeroes;
+    //Check to verify the heroes array isn't full
     if (maxHeroes <= arrNumHeroes) {
         cout << "Sorry, your complex can only hold " << maxHeroes << " heroes.\n";
         cout << "You cannot add any more!\n";
         return arrNumHeroes;
     }
 
-
+    // \t = tab
     cout << "What do you want to do?\n";
     cout << "\t\t1. Load the heroes from a file.\n";
     cout << "\t\t2. Enter a hero manually.\n";
     cout << "\t\tChoose 1 or 2.\n";
     cout << "CHOICE: ";
     cin >> userChoice;
+    // new way to validate answers
     while(cin.fail() || !((userChoice == 1) || (userChoice == 2)) ) {
         cin.clear();
         cin.ignore(255, '\n');
@@ -49,7 +49,7 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
 
     switch (userChoice) {
         case 1:
-
+            // loading users from file
             cout << "What is the name of the file with your list of superheroes? (ex: filename.txt)\n";
             cout << "FILE NAME: ";
             cin >> heroFileName;
@@ -58,7 +58,6 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
             inFileStream.open(heroFileName);
 
             //Verify that the user input was valid and the file opens correctly.
-            //If not, then ask user for dir name and try again
             while(cin.fail() || !(inFileStream.is_open())) {
                 cin.clear();
                 cin.ignore(255, '\n');
@@ -68,30 +67,26 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
                 cin >> heroFileName;
                 inFileStream.open(heroFileName);
     }
-
+            // reads from the file
             while(getline(inFileStream, tempString, '#')) {
                 switch(count) {
                     case 1:
                         heroArr[arrNumHeroes].heroName = tempString;
-                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         count += 1;
                         break;
 
                     case 2:
                         heroArr[arrNumHeroes].heroDesc = tempString;
-                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         count += 1;
                         break;
 
                     case 3:
                         if (tempString == "0") {
                             heroArr[arrNumHeroes].heroDanger = false;
-                            //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         }
 
                         else if (tempString == "1") {
                             heroArr[arrNumHeroes].heroDanger = true;
-                            //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         }
 
                         count += 1;
@@ -99,19 +94,16 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
 
                     case 4:
                         heroArr[arrNumHeroes].rent.heroRent = stof(tempString);
-                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         count += 1;
                         break;
 
                     case 5:
                         heroArr[arrNumHeroes].rent.heroDmg = stof(tempString);
-                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         count += 1;
                         break;
 
                     case 6:
                         heroArr[arrNumHeroes].rent.heroYears = stof(tempString);
-                        //cout << "Adding " << tempString << " to heroArray[" << numHeroes << "]\n";
                         count = 1;
                         arrNumHeroes += 1;
                         break;
@@ -124,13 +116,14 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
                 }
             }
 
-            cout << arrNumHeroes << " hero(s) from " << heroFileName << " have been added to your condo complex.\n";
+            cout << arrNumHeroes << " hero(es) from " << heroFileName << " have been added to your condo complex.\n";
 
             inFileStream.close();
-            //cout << "File closed\n";
+            //closes file
             break;
         
         case 2:
+            // manually enter the heroes in
             for(int i = arrNumHeroes; i < maxHeroes; i++) {
                 cout << "SUPERHERO NAME: ";
                 cin.ignore();
@@ -199,6 +192,7 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
                 }
 
                 cout << "The " << heroArr[i].heroName << " has been added.\n";
+                // adds one to the array counter
                 arrNumHeroes += 1;
 
                 cout << "Want to add more heroes? (y or n) ";
@@ -227,12 +221,12 @@ int enterHeroes(int maxHeroes, int arrNumHeroes, heroes* heroArr)
     return arrNumHeroes;
 }
 
-
+// deletes the hero you select
 int deleteHeroes(int arrNumHeroes, heroes* heroArr)
 {
 	string removeHero;
 
-    cout << "The following is a list of all the heros living in your condo complex: ";
+    cout << "The following is a list of all the heros living in your condo complex: " << endl;
     for (int i = 0; i < arrNumHeroes; i++) {
         cout << heroArr[i].heroName << '\n';
     }
@@ -249,7 +243,7 @@ int deleteHeroes(int arrNumHeroes, heroes* heroArr)
         cout << "SUPERHERO NAME: ";
         getline(cin, removeHero);
     }
-
+    // decrements the counter
     if(moveArrayElements(removeHero, arrNumHeroes, heroArr)) {
         cout << "You have removed " << removeHero << ".\n";
         arrNumHeroes -= 1;
@@ -258,11 +252,10 @@ int deleteHeroes(int arrNumHeroes, heroes* heroArr)
     else 
         cout << "Sorry a hero by the name " << removeHero << " could not be found.\n";
 
-    cout << arrNumHeroes;
     return arrNumHeroes;
 
 }
-
+// shifts the array
 bool moveArrayElements(string heroName, int arrNumHeroes, heroes *heroArr) {
     for (int i = 0; i < arrNumHeroes; i++) {
         if (heroName == heroArr[i].heroName) {
@@ -279,47 +272,58 @@ bool moveArrayElements(string heroName, int arrNumHeroes, heroes *heroArr) {
     }
     return false;
 }
-
+// prints the array in a neat manner. This was tough
 void printHeroes(int arrNumHeroes, heroes* heroArr)
 {
 	for(int i = 0; i < arrNumHeroes; i++){
 		cout << line << "\nSUPERHERO " << i+1 << endl;
-		cout << "\n\nNAME:     " << heroArr[i].heroName << endl;
-		cout << "DESC:     " << heroArr[i].heroDesc << endl;
-		cout << "DANGER:   ";
+		cout << "\n\nNAME:\t\t" << heroArr[i].heroName << endl;
+		cout << "DESC:\t\t" << textWrap(heroArr[i].heroDesc, 100) << endl;
+		cout << "DANGER:\t\t";
         if(heroArr[i].heroDanger){
             cout << "Yes" << endl;
         }
         else {
             cout << "No" << endl;
         }
-		cout << "RENT:     " << heroArr[i].rent.heroRent << endl;
-		cout << "DAMAGE:   " << heroArr[i].rent.heroDmg << endl;
-		cout << "YEARS:    " << heroArr[i].rent.heroYears << endl;
+		cout << "RENT:\t\t" << heroArr[i].rent.heroRent << endl;
+		cout << "DAMAGE:\t\t" << heroArr[i].rent.heroDmg << endl;
+		cout << "YEARS:\t\t" << heroArr[i].rent.heroYears << endl;
 	}
 }
-
+// format is perfect thanks to help
 void printRentDetails(int arrNumHeroes, heroes* heroArr)
 {
-	int totalRent = 0, totalDmg = 0;
-	cout << "\n\nRENT DETAILS OF EACH HERO: " << endl;
-	cout << "\nSUPERHERO          MONTHLY RENT     DAMAGE COST" << endl;
+	string tabs(2, '\t');
+    string line(75, '-');
+    float rentTotal = 0, damageTotal = 0;
+    cout << "RENT DETAILS OF EACH HERO:\n\n";
+    cout << "SUPERHERO" << tabs << "MONTHLY RENT" << tabs << "DAMAGE COST\n"; 
 
-	for(int i = 0; i < arrNumHeroes; i++){
-		cout << heroArr[i].heroName << "    $" << heroArr[i].rent.heroRent << "    $" << heroArr[i].rent.heroDmg << endl;
-		totalRent += heroArr[i].rent.heroRent;
-		totalDmg += heroArr[i].rent.heroDmg;
-	}
-	cout << "-----------------------------------------------------------------------" << endl;
+    //Display rent data in heroArr
+    for(int i = 0; i < arrNumHeroes; i++){
+        cout << heroArr[i].heroName;
+        if((heroArr[i].heroName).length() < 8)
+            cout << "\t";
+        cout << tabs << "$" << heroArr[i].rent.heroRent;
+        if(to_string(heroArr[i].rent.heroRent).length() < 12)
+            cout << "\t";
+        cout << tabs << "$" << heroArr[i].rent.heroDmg << endl;
+        rentTotal += heroArr[i].rent.heroRent;
+        damageTotal += heroArr[i].rent.heroDmg;
+    }
+    cout << line << endl;
+    //Display totals
+    cout << "\nTOTALS:" << tabs << "\t" << "$" << rentTotal << tabs << "\t$" << damageTotal << endl << endl;
 
-	cout << "\nTOTALS:           $     " << totalRent << "    $        " << totalDmg;
+     
 }
-
+// saves the heroes to a file.
 void saveToFile(int arrNumHeroes, heroes *heroArr) {
     string fileName;
     ofstream printFile;
     cin.ignore();
-    cout << "what is the name if the file?: "; 
+    cout << "What is the name of the file?: "; 
     getline(cin, fileName);
     printFile.open(fileName);
     if (printFile.is_open()){
@@ -337,4 +341,24 @@ void saveToFile(int arrNumHeroes, heroes *heroArr) {
         cout << "An error has occured while trying to print your file." << endl;
     }
     printFile.close();
+}
+
+// was given # not my work but it is cool that it works #
+string textWrap(string str, int location) {
+    int currentLocation = location;
+    bool end = false;
+    // your other code
+    while (!(end)) {
+        int n = str.rfind(' ', currentLocation);
+        if (n != string::npos) {
+            str.at(n) = '\n';
+            str.insert(n+1, "\t\t");
+            currentLocation += location;
+        }
+        if (currentLocation > str.length()) {
+            end = true;
+        }
+    }
+    // your other code
+    return str;
 }

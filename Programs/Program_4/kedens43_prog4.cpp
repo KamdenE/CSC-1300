@@ -2,7 +2,8 @@
 	Title:  	kedens_prog4.cpp
 	Author:		Kamden Edens
 	Date:		4/22/2022
-	Purpose:	Program 4 
+	Purpose:	Program 4: A super hero condo complex that lets the user
+                add and delete users.
 */
 
 #include <iostream>
@@ -16,7 +17,7 @@ using namespace std;
 
 
 int main() {
-
+    // defining variables
     int answerChoice, loopAnswer;
     int maxHeroes = 0, arrNumHeroes = 0;
     string heroName;
@@ -24,7 +25,7 @@ int main() {
     string line(50, '-');
     bool runProg;
 
-
+    // user interface
     cout << "\n\nHow many people live in your condo complex? ";
     cin >> maxHeroes;
     while(maxHeroes < 0){
@@ -32,10 +33,10 @@ int main() {
         cin.ignore();
         cin >> maxHeroes;
     }
-
+    // dynamically allocates array
     heroes* heroArr;
     heroArr = new heroes[maxHeroes];
-    
+    // starts loop
     while(loopAnswer != 5) {
         cout << "\n\nWhat would like to do?" << endl;
         cout << "     1.   Enter in some superheros" << endl;
@@ -52,14 +53,14 @@ int main() {
             cin.ignore();
             cin >> answerChoice;
         }
-
+        //switch that goes through the appropriate functions
         switch(answerChoice)
         {
             case 1:
             arrNumHeroes = enterHeroes(maxHeroes, arrNumHeroes, heroArr);
             break;
             case 2:
-            deleteHeroes(arrNumHeroes, heroArr);
+            arrNumHeroes = deleteHeroes(arrNumHeroes, heroArr);
             moveArrayElements(heroName, arrNumHeroes, heroArr);
             break;
             case 3:
@@ -69,6 +70,7 @@ int main() {
             printRentDetails(arrNumHeroes, heroArr);
             break;
             case 5:
+                // validates the last function
                 cout << "\n\nWould you like to save your superheroes list to a file? (y or n) ";
                 cin >> answer5;
                 while(cin.fail() || !( (tolower(answer5) == 'y') || (tolower(answer5) == 'n') )) {
@@ -91,6 +93,7 @@ int main() {
             
         }
     }
+    // clears the array out so data leak is prevented
     delete [] heroArr;
 
 
