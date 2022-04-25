@@ -269,7 +269,7 @@ bool moveArrayElements(string heroName, int arrNumHeroes, heroes *heroArr) {
                 heroArr[j].heroName = heroArr[j+1].heroName;
                 heroArr[j].heroDesc = heroArr[j+1].heroDesc;
                 heroArr[j].heroDanger = heroArr[j+1].heroDanger;
-                heroArr[j].rent.heroYears = heroArr[j+1].rent.heroYears;
+                heroArr[j].rent.heroRent = heroArr[j+1].rent.heroRent;
                 heroArr[j].rent.heroDmg = heroArr[j+1].rent.heroDmg;
                 heroArr[j].rent.heroYears = heroArr[j+1].rent.heroYears;
             }
@@ -282,7 +282,7 @@ bool moveArrayElements(string heroName, int arrNumHeroes, heroes *heroArr) {
 void printHeroes(int arrNumHeros, heroes* heroArr)
 {
 	for(int i = 0; i < arrNumHeros; i++){
-		cout << line << "SUPERHERO " << i+1 << endl;
+		cout << line << "\nSUPERHERO " << i+1 << endl;
 		cout << "\n\nNAME:     " << heroArr[i].heroName << endl;
 		cout << "DESC:     " << heroArr[i].heroDesc << endl;
 		cout << "DANGER:   ";

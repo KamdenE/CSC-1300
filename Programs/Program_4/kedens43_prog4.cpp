@@ -57,10 +57,10 @@ int main() {
         {
             case 1:
             arrNumHeroes = enterHeroes(maxHeroes, arrNumHeroes, heroArr);
-            moveArrayElements(heroName, arrNumHeroes, heroArr);
             break;
             case 2:
             deleteHeroes(arrNumHeroes, heroArr);
+            moveArrayElements(heroName, arrNumHeroes, heroArr);
             break;
             case 3:
             printHeroes(arrNumHeroes, heroArr);
